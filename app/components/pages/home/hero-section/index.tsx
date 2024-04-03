@@ -2,23 +2,23 @@ import { Button } from "@/app/components/button"
 import { TechBadge } from "@/app/components/tech-badge"
 import Image from "next/image"
 import { HiArrowNarrowRight } from 'react-icons/hi'
-import { TbBrandGithub, TbBrandLinkedin, TbBrandYoutube, TbBrandWhatsapp } from 'react-icons/tb'
+import { TbBrandGithub, TbBrandLinkedin, TbBrandYoutube, TbBrandWhatsapp, TbBrandInstagram } from 'react-icons/tb'
 
 const MOCK_CONTACTS = [
     {
-        url: "https://github.com.br",
+        url: "https://github.com/DouglasBGavioli",
         icon: <TbBrandGithub />
     },
     {
-        url: "https://github.com.br",
+        url: "https://www.linkedin.com/in/douglasbgavioli/",
         icon: <TbBrandLinkedin />
     },
     {
-        url: "https://github.com.br",
-        icon: <TbBrandYoutube />
+        url: "https://www.instagram.com/douglasbgavioli/",
+        icon: <TbBrandInstagram />
     },
     {
-        url: "https://github.com.br",
+        url: "https://wa.me/5555999933697",
         icon: <TbBrandWhatsapp />
     },
 ]
