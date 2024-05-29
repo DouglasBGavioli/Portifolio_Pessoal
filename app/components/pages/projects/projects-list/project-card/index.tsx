@@ -16,7 +16,7 @@ export const ProjectCard = () => {
 
             <div className="flex-1 flex flex-col p-7">
                 <strong className="font-medium text-gray-50/90 group-hover:text-yellow-500 transition-all">Divisão Urutu Airsoft</strong>
-                <p className="mt-2 text-gray-400 line-clamp-4">O divisão urutu airsoft é um site criado para divulgar gerenciar e incentivar meu time de airsoft</p>
+                <p className="mt-2 text-gray-400 line-clamp-4">A divisão urutu airsoft é um site criado para divulgar gerenciar e incentivar meu time de airsoft</p>
                 <span className="text-gray-300 text-sm font-medium block mt-auto truncate">React.js, Typescript, Sass, Firebase</span>
             </div>
         </div>
