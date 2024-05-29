@@ -55,13 +55,13 @@ export const HeroSection = () => {
                             <HiArrowNarrowRight size={18} />
                         </Button>
 
-                        <div className="text-gray-600 text-2xl flex items-center h-20 gap-3">
+                        <div className="text-gray-600 text-2xl flex items-center min-h-20 max-h-60 gap-3 transition-all xlg:flex-col xlg:fixed xlg:right-20 xlg:top-1/2 xlg:transform xlg:-translate-y-1/2 xlg:gap-4 xlg: p-8 xlg:rounded-lg  xlg:bg-gray-600/20 xlg:aspect-auto xlg:text-4xl">
                             {MOCK_CONTACTS.map((contact, index) => (
                                 <a
                                     href={contact.url}
                                     key={`contact-${index}`}
                                     target="_blank"
-                                    className="hover:text-gray-100 transition-colors"
+                                    className="hover:text-yellow-400 transition-colors"
                                 >
                                     {contact.icon}
                                 </a>
