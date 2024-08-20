@@ -1,18 +1,23 @@
 import { Link } from "@/app/components/link"
 import { TechBadge } from "@/app/components/tech-badge"
+import { Project } from "@/app/types/projects"
 import Image from "next/image"
 import { HiArrowNarrowRight } from "react-icons/hi"
 
-export const ProjectCard = () => {
+type ProjectCardProps = {
+    project: Project
+}
+
+export const ProjectCard = ({ project }: ProjectCardProps) => {
     return (
         <div className="flex gap-6 lg:gap-12 flex-col lg:flex-row">
-            <div className="w-full h-full">
+            <div className="w-full h-full lg:max-w-[520px]">
                 <Image
-                    width={420}
+                    width={520}
                     height={304}
-                    src={"/images/image-moch.png"}
-                    alt="Thumbnail do projeto"
-                    className="w-full h-[200px] sm:h-[300px] lg:w-[420px] lg:min-h-full object-cover rounded-lg"
+                    src={project.thumbnail.url}
+                    alt={`Thumbnail do projeto ${project.title}`}
+                    className="w-full h-[200px] sm:h-[300px] lg:w-[520px] lg:min-h-full object-cover rounded-lg"
                 />
             </div>
 
@@ -24,22 +29,21 @@ export const ProjectCard = () => {
                         alt="Icon"
                         src="/images/icons/project-title-icon.svg"
                     />
-                    LoremIpsum
+                    {project.title}
                 </h3>
 
                 <p className="text-gray-400 my-6">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum est deleniti, sed ipsam aspernatur doloribus soluta ut ducimus numquam reprehenderit omnis asperiores, sunt eligendi laudantium quae nulla? Alias consectetur assumenda incidunt a aperiam libero dolores quam. Quam adipisci laboriosam eum.
+                    {project.shortDescription}
+
                 </p>
 
                 <div className="flex gap-x-2 gap-y-3 flex-wrap mb-8 lg:max-w-[350px]">
-                    <TechBadge name="Next.js" />
-                    <TechBadge name="Next.js" />
-                    <TechBadge name="Next.js" />
-                    <TechBadge name="Next.js" />
-                    <TechBadge name="Next.js" />
+                    {project.technologies.map(tech => (
+                        <TechBadge key={`${project.title}-tech-${tech.name}`} name={tech.name} />
+                    ))}
                 </div>
 
-                <Link href={"/projects/loremIpsum"}>
+                <Link href={`/projects/${project.slug}`}>
                     Ver projeto
                     <HiArrowNarrowRight />
                 </Link>
