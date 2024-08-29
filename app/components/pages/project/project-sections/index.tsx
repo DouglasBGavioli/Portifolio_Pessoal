@@ -1,17 +1,11 @@
+import { ProjectSection } from "@/app/types/projects"
 import Image from "next/image"
 
-const sections = [
-    {
-        title: "Home",
-        image: "/images/mochs/home-dua.png"
-    },
-    {
-        title: "Integrantes",
-        image: "/images/mochs/integrantes-dua.png"
-    }
-]
+type ProjectSectionsProps = {
+    sections: ProjectSection[]
+}
 
-export const ProjectSections = () => {
+export const ProjectSections = ({ sections }: ProjectSectionsProps) => {
     return (
         <section className="container my-12 md:my-32 flex flex-col gap-8 md:gap-32">
             {sections.map(section => (
@@ -19,14 +13,13 @@ export const ProjectSections = () => {
                     <h2 className="text-2xl md:text-3xl font-medium text-gray-300" >{section.title}
                     </h2>
                     <Image
-                        src={section.image}
+                        src={section.image.url}
                         width={1080}
                         height={672}
                         className="w-full aspect-auto rounded-lg object-cover"
                         alt={`Imagem da sessão ${section.title}`}
                         unoptimized
                     />
-
                 </div>
             ))}
         </section>
