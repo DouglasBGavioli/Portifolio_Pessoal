@@ -42,7 +42,6 @@ const getProjectDatails = async (slug: string): Promise<ProjectPageData> => {
     `
   return fetchHygraphQuery(
     query,
-    60 * 60 * 24
   )
 }
 
