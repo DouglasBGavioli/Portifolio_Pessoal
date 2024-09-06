@@ -5,6 +5,10 @@ import { WorkExperience } from "./components/pages/home/work-experience";
 import { HomePageData } from "./types/page-info";
 import { fetchHygraphQuery } from "./utils/fetch-hygraph-query";
 
+export const metadata = {
+  title: 'Portfólio Douglas Gavioli'
+}
+
 const getPageData = async (): Promise<HomePageData> => {
   const query = `
  query PageInfoQuery {
@@ -65,7 +69,6 @@ const getPageData = async (): Promise<HomePageData> => {
 
 export default async function Home() {
   const { page: pageData, workExperiences } = await getPageData();
-  console.log(pageData);
 
   return (
     <>

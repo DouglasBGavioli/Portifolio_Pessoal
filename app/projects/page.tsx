@@ -3,8 +3,12 @@ import { ProjectsList } from "../components/pages/projects/projects-list";
 import { ProjectsPageData } from "../types/page-info";
 import { fetchHygraphQuery } from "../utils/fetch-hygraph-query";
 
+export const metadata = {
+  title: 'Projetos'
+}
+
 const getPageData = async (): Promise<ProjectsPageData> => {
-    const query = `
+  const query = `
     query ProjectsQuery {
       projects {
         shortDescription
@@ -20,19 +24,19 @@ const getPageData = async (): Promise<ProjectsPageData> => {
     }
     `
 
-    return fetchHygraphQuery(
-        query,
-        1000 * 60 * 60 * 24, // 1 day
-    )
+  return fetchHygraphQuery(
+    query,
+    1000 * 60 * 60 * 24, // 1 day
+  )
 }
 
 export default async function Projects() {
-    const { projects } = await getPageData();
+  const { projects } = await getPageData();
 
-    return (
-        <>
-            <PageIntroduction />
-            <ProjectsList projects={projects} />
-        </>
-    )
+  return (
+    <>
+      <PageIntroduction />
+      <ProjectsList projects={projects} />
+    </>
+  )
 }
