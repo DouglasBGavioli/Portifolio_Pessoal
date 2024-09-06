@@ -5,6 +5,7 @@ import { Link } from "@/app/components/link"
 import { HiArrowNarrowRight } from "react-icons/hi"
 import { Project } from "@/app/types/projects"
 
+
 type HighlightedProjectsProps = {
     projects: Project[]
 }
