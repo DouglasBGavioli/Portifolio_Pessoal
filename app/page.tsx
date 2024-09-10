@@ -1,3 +1,4 @@
+import { Certificates } from "./components/pages/home/certificates";
 import { HeroSection } from "./components/pages/home/hero-section";
 import { HighlightedProjects } from "./components/pages/home/highlighted-projects";
 import { KnowTechs } from "./components/pages/home/known-techs";
@@ -6,75 +7,59 @@ import { HomePageData } from "./types/page-info";
 import { fetchHygraphQuery } from "./utils/fetch-hygraph-query";
 
 export const metadata = {
-  title: 'Home | Portfólio Douglas Gavioli'
-}
+  title: 'Home | Portfólio Douglas Gavioli',
+};
 
 const getPageData = async (): Promise<HomePageData> => {
-  const query = `
- query PageInfoQuery {
-  page(where: {slug: "home"}) {
-    introduction {
-      raw
-    }
-    technologies {
-      name
-    }
-    profilePicture {
-      url
-    }
-    socials {
-      url
-      iconSvg
-    }
-    knownTechs {
-      iconSvg
-      name
-      startDate
-    }
-    highlightProjects {
+  const queryPageData = `
+    query PageInfoQuery {
+      page(where: {slug: "home"}) {
+        introduction { raw }
+        technologies { name }
+        profilePicture { url }
+        socials { url iconSvg }
+        knownTechs { iconSvg name startDate }
+        highlightProjects {
           slug
-          thumbnail {
-            url
-          }
+          thumbnail { url }
           title
           shortDescription
-          technologies {
-            name
-          }
+          technologies { name }
         }
-  }
-  workExperiences {
-        companyLogo {
-          url
-        }
+      }
+      workExperiences {
+        companyLogo { url }
         role
         companyName
         companyUrl
         startDate
         endDate
-        description {
-          raw
-        }
-        technologies {
-          name
+        description { raw }
+        technologies { name }
+      }
+      certificates {
+        title
+        onlineCredential
+        thumbnail {
+          url
         }
       }
-}
-`
-  return fetchHygraphQuery(
-    query
-  )
-}
+    }
+  `;
+  return fetchHygraphQuery(queryPageData);
+};
+
 
 export default async function Home() {
-  const { page: pageData, workExperiences } = await getPageData();
+  const { page: pageData, workExperiences, certificates } = await getPageData();
 
   return (
     <>
       <HeroSection homeInfo={pageData} />
       <KnowTechs techs={pageData.knownTechs} />
       <HighlightedProjects projects={pageData.highlightProjects} />
+      <Certificates certificate={certificates} />
       <WorkExperience experiences={workExperiences} />
     </>
-  )
+  );
 }

@@ -55,7 +55,7 @@ export const HeroSection = ({ homeInfo }: HomeSectionProps) => {
                             <HiArrowNarrowRight size={18} />
                         </Button>
 
-                        <div className="text-gray-600 text-2xl flex items-center min-h-20 max-h-60 gap-3 transition-all xlg:flex-col xlg:fixed xlg:right-20 xlg:top-1/2 xlg:transform xlg:-translate-y-1/2 xlg:gap-4 xlg: p-8 xlg:rounded-lg  xlg:bg-gray-600/20 xlg:aspect-auto xlg:text-4xl">
+                        <div className="text-gray-600 text-2xl flex items-center min-h-20 max-h-60 gap-3 transition-all xlg:hidden">
                             {homeInfo.socials.map((contact, index) => (
                                 <a
                                     href={contact.url}
@@ -70,6 +70,18 @@ export const HeroSection = ({ homeInfo }: HomeSectionProps) => {
                     </div>
 
                 </motion.div>
+                <div className="hidden text-gray-600 text-2xl items-center min-h-20 max-h-60 gap-3 transition-all xlg:flex xlg:flex-col xlg:fixed xlg:right-20 xlg:top-1/2 xlg:transform xlg:-translate-y-1/2 xlg:gap-4 xlg: p-8 xlg:rounded-lg  xlg:bg-gray-600/20 xlg:aspect-auto xlg:text-4xl">
+                    {homeInfo.socials.map((contact, index) => (
+                        <a
+                            href={contact.url}
+                            key={`contact-${index}`}
+                            target="_blank"
+                            className="hover:text-yellow-400 transition-colors"
+                        >
+                            <CMSIcon icon={contact.iconSvg} />
+                        </a>
+                    ))}
+                </div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 200, scale: 0.5 }}
