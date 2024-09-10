@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 import { fadeUpAnimation } from "@/app/lib/animations";
 import { useState } from "react";
 import Link from "next/link";
+import { HiArrowNarrowRight } from "react-icons/hi";
 
 type CertificatesProps = {
     certificate: certificate[]
@@ -48,7 +49,7 @@ export const Certificates = ({ certificate }: CertificatesProps) => {
                 transition={{ duration: 0.5 }}
             >
                 <motion.div
-                    className="w-full h-[200px] sm:h-[300px] lg:w-[520px] lg:min-h-full"
+                    className="w-full h-[200px] sm:h-[350px] lg:w-[520px] lg:min-h-full"
                     initial={{ opacity: 0, y: 100, scale: 0.5 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 100, scale: 0.5 }}
@@ -101,11 +102,11 @@ export const Certificates = ({ certificate }: CertificatesProps) => {
                         transition={{ duration: 0.2, delay: 0.3 }}
                     >
                         {certificate[currentIndex] && certificate[currentIndex].onlineCredential && (
-                            <Link href={certificate[currentIndex]?.onlineCredential!} target="_blank" rel="noopener noreferrer">
+                            <Link className="inline-flex items-center gap-1.5 hover:text-yellow-400 transition-all" href={certificate[currentIndex]?.onlineCredential!} target="_blank" rel="noopener noreferrer">
                                 Acesse o certificado
+                                <HiArrowNarrowRight />
                             </Link>
                         )}
-
 
                     </motion.p>
 
