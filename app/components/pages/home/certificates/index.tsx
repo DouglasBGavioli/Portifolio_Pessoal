@@ -3,41 +3,28 @@
 import { HorizontalDivider } from "@/app/components/divider/horizontal"
 import { SectionTitle } from "@/app/components/section-title"
 import { Certificates as certificate } from "@/app/types/certificates"
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css'; // Certifique-se de importar o CSS básico do Swiper
-import 'swiper/css/navigation'; // Importa o CSS da navegação
-import 'swiper/css/pagination'; // Importa o CSS da paginação
-import { Navigation, Pagination } from 'swiper/modules'; // Importando os módulos corretamente
+
 import Image from "next/image"
-import { motion } from "framer-motion";
-import { fadeUpAnimation } from "@/app/lib/animations";
-import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useState } from "react"
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { fadeUpAnimation } from "@/app/lib/animations";
 import { HiArrowNarrowRight } from "react-icons/hi";
 
 type CertificatesProps = {
     certificate: certificate[]
 }
 
-const array = [
-    {
-        img: '/images/image-moch.png'
-    },
-    {
-        img: '/images/image-moch.png'
-    },
-    {
-        img: '/images/image-moch.png'
-    },
-    {
-        img: '/images/image-moch.png'
-    }
-]
-
 export const Certificates = ({ certificate }: CertificatesProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    return (
 
+    return (
         <section className="container flex flex-col py-16">
             <SectionTitle subtitle="aprendizado" title="Certificados" />
             <HorizontalDivider className="mb-16" />
@@ -56,12 +43,13 @@ export const Certificates = ({ certificate }: CertificatesProps) => {
                     transition={{ duration: 0.3, delay: 0.3 }}
                 >
                     <Swiper
+                        modules={[Navigation, Pagination, Autoplay]}
                         spaceBetween={30}
                         slidesPerView={1}
                         loop={true}
+                        autoplay={{ delay: 5000 }}
                         navigation={true}
                         pagination={{ clickable: true }}
-                        modules={[Navigation, Pagination]}
                         className="w-full h-[200px] sm:h-[350px] lg:w-[520px] lg:min-h-full"
                         onSlideChange={(swiper) => {
                             setCurrentIndex(swiper.realIndex);

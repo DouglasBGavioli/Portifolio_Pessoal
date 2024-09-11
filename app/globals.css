@@ -8,8 +8,6 @@
   }
 }
 
-
-
 .swiper-button-next::after,
 .swiper-button-prev::after {
   @apply text-yellow-400;
@@ -20,7 +18,6 @@
   background-color: #facc15 !important;
   /* Cor vermelha mais intensa da bolinha ativa */
 }
-
 
 .container {
   @apply mx-auto w-full max-w-[1200px] px-6
