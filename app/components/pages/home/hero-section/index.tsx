@@ -169,24 +169,25 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
                             <HiArrowNarrowRight size={18} />
                         </Button>
 
-                        <div className="text-gray-600 text-2xl flex items-center min-h-20 max-h-60 gap-3 transition-all xlg:hidden px-4 py-8">
-                            {homeInfo.socials.map((contact, index) => (
-                                <a
-                                    href={contact.url}
-                                    key={`contact-${index}`}
-                                    target="_blank"
-                                    className="hover:text-yellow-400 transition-colors"
-                                >
-                                    <CMSIcon icon={contact.iconSvg} />
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="flex items-center lg:mt-5 sm:item-center flex-col sm:flex-row">
-                        <Button onClick={generateCurriculum} className="text-sm py-1 px-4 min-w-[186px]">
+                        <Button onClick={generateCurriculum} className="shadow-button w-max">
                             Gerar currículo
                         </Button>
+
+
                     </div>
+                    <div className="text-gray-600 text-2xl flex items-center min-h-20 max-h-60 gap-3 transition-all xlg:hidden px-4 py-8">
+                        {homeInfo.socials.map((contact, index) => (
+                            <a
+                                href={contact.url}
+                                key={`contact-${index}`}
+                                target="_blank"
+                                className="hover:text-yellow-400 transition-colors"
+                            >
+                                <CMSIcon icon={contact.iconSvg} />
+                            </a>
+                        ))}
+                    </div>
+
 
                 </motion.div>
 
