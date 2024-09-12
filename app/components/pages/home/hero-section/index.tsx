@@ -163,7 +163,7 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
                         ))}
                     </div>
 
-                    <div className="flex items-center mt-6 lg:mt-10 sm:item-center sm:gap-5 flex-col sm:flex-row">
+                    <div className="flex items-center mt-6 lg:mt-10 sm:item-center gap-5 flex-col sm:flex-row">
                         <Button className="shadow-button w-max" onClick={handleContact}>
                             Entre em contato
                             <HiArrowNarrowRight size={18} />
@@ -175,7 +175,7 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
 
 
                     </div>
-                    <div className="text-gray-600 text-2xl flex items-center min-h-20 max-h-60 gap-3 transition-all xlg:hidden px-4 py-8">
+                    <div className="text-gray-600 text-2xl flex items-center min-h-20 max-h-60 gap-3 transition-all xlg:hidden px-4 py-8 justify-center sm:justify-start">
                         {homeInfo.socials.map((contact, index) => (
                             <a
                                 href={contact.url}
@@ -187,7 +187,6 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
                             </a>
                         ))}
                     </div>
-
 
                 </motion.div>
 
