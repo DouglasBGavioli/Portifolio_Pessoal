@@ -11,6 +11,7 @@ export type Social = {
 export type HomePageInfo = {
   introduction: {
     raw: RichTextContent
+    text:string
   }
   technologies: KnownTech[]
   profilePicture: {
