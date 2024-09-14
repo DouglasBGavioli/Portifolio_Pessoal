@@ -1,1 +1,1 @@
-In progress
+Portfólio pessoal desenvolvido em next13, typescrip, tailwind e integração com hygraph. 
