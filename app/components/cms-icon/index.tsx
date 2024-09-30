@@ -4,8 +4,11 @@ type CMSIconProps = {
 
 export const CMSIcon = ({ icon }: CMSIconProps) => {
     return (
-        <div dangerouslySetInnerHTML={{
-            __html: icon
-        }} />
+        <div
+            className="max-h-[1em] max-w-[1em] overflow-hidden"
+            dangerouslySetInnerHTML={{
+                __html: icon
+            }}
+        />
     )
 }
