@@ -14,7 +14,7 @@ export const ProjectSections = ({ sections }: ProjectSectionsProps) => {
             {sections.map(section => (
                 <motion.div
                     key={section.title}
-                    className="flex flex-col items-center gap-6 md:gap-12 max-h-[600px]"
+                    className="flex flex-col items-center gap-6 md:gap-12 max-h-[650px]"
                     {...fadeUpAnimation}
                     transition={{ duration: 0.5 }}
                 >
