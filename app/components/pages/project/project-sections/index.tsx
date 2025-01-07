@@ -14,7 +14,7 @@ export const ProjectSections = ({ sections }: ProjectSectionsProps) => {
             {sections.map(section => (
                 <motion.div
                     key={section.title}
-                    className="flex flex-col items-center gap-6 md:gap-12"
+                    className="flex flex-col items-center gap-6 md:gap-12 max-h-[600px]"
                     {...fadeUpAnimation}
                     transition={{ duration: 0.5 }}
                 >
@@ -24,7 +24,7 @@ export const ProjectSections = ({ sections }: ProjectSectionsProps) => {
                         src={section.image.url}
                         width={1080}
                         height={672}
-                        className="w-full aspect-auto rounded-lg object-cover"
+                        className="w-full aspect-auto rounded-lg object-contain max-h-[600px]"
                         alt={`Imagem da sessão ${section.title}`}
                         unoptimized
                     />
