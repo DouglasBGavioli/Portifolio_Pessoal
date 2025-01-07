@@ -20,7 +20,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             exit={{ opacity: 0, y: 100 }}
             transition={{ duration: 0.5 }}
         >
-            <motion.div
+            <motion.a href={`/projects/${project.slug}`}
                 className="w-full h-[200px] sm:h-[300px] lg:w-[520px] lg:min-h-full"
                 initial={{ opacity: 0, y: 100, scale: 0.5 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -34,7 +34,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                     alt={`Thumbnail do projeto ${project.title}`}
                     className="w-full h-full object-cover rounded-lg"
                 />
-            </motion.div>
+            </motion.a>
 
             <div className="flex-1 lg:py-[18px]">
                 <motion.h3
