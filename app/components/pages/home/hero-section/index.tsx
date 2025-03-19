@@ -6,7 +6,7 @@ import { RichText } from "@/app/components/rich-text"
 import { TechBadge } from "@/app/components/tech-badge"
 import { HomePageInfo } from "@/app/types/page-info"
 import Image from "next/image"
-import { HiArrowNarrowRight } from 'react-icons/hi'
+import { HiArrowNarrowDown, HiArrowNarrowRight } from 'react-icons/hi'
 import { motion } from 'framer-motion'
 import { techBadgeAnimation } from "@/app/lib/animations"
 import { Certificates } from "@/app/types/certificates"
@@ -29,7 +29,114 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
         }
     }
 
-    const generateCurriculum = () => {
+    const englishCurriculum = () => {
+        let positionKnowTechs = 170;
+        let positionWorkExp = 130;
+        let positionCertificates = 220;
+        const doc = new jsPDF({
+            orientation: 'portrait',
+            unit: 'mm',
+            format: 'a4',
+        });
+
+        // Fonte
+        doc.setFont('helvetica');
+
+        // TÍTULO E NOME
+        doc.setFontSize(24);
+        doc.setFont('helvetica', 'bold');
+        doc.text("DEVELOPER", 10, 20);
+        doc.setFontSize(40);
+        doc.text("DOUGLAS", 10, 35);
+        doc.text("GAVIOLI", 10, 50);
+
+        // Seção de Contato
+        doc.setFontSize(12);
+        doc.setFont('helvetica', 'bold');
+        doc.text("DETAILS", 10, 70);
+        doc.text("douglasbiassi.dev@hotmail.com", 10, 80);
+        doc.text("Santiago", 10, 90);
+        doc.text("Rio Grande do Sul, Brazil", 10, 100);
+        doc.text("55 99993-3697", 10, 110);
+        doc.text(format(new Date(), 'MM/dd/yyyy'), 10, 120);
+        doc.text("Brazilian", 10, 130);
+        doc.text("www.dbgdev.com.br", 10, 140);
+
+        // Seção de Habilidades
+        doc.setFont('helvetica', 'bold');
+        doc.text("SKILLS", 10, 160);
+        doc.setFont('helvetica', 'normal');
+        {
+            homeInfo.knownTechs.forEach((habilidade) => {
+                doc.text(`- ${habilidade.name}`, 10, positionKnowTechs);
+                positionKnowTechs += 10; // Incrementa a posição Y para a próxima linha
+            });
+        }
+
+        // Seção de Línguas
+        doc.setFont('helvetica', 'bold');
+        doc.text("LANGUAGES", 10, 250);
+        doc.setFont('helvetica', 'normal');
+        doc.text("- Spanish | Basic", 10, 260);
+        doc.text("- English | Advanced", 10, 270);
+
+
+        // Seção de Objetivo
+        doc.setFont('helvetica', 'bold');
+        doc.text("OBJECTIVE", 90, 70);
+        doc.setFont('helvetica', 'normal');
+        doc.text(doc.splitTextToSize('Hello, my name is Douglas Biassi Gavioli, I am a front-end developer with over 4 years of experience and passionate about technology. My goal is to create creative, beautiful and functional interfaces, as well as share and acquire knowledge. I am always open to new opportunities, challenges and criticism.', 110), 90, 80);
+
+
+        // Seção de Experiência
+        doc.setFont('helvetica', 'bold');
+        doc.text("CURRENT POSITION", 90, 120);
+        doc.setFont('helvetica', 'normal');
+        {
+            let workExp = workExperience[0];
+
+            // Empresa e Cargo
+            doc.text(`@ ${workExp.companyName}`, 90, positionWorkExp);
+            positionWorkExp += 10;
+            doc.text(`${workExp.role}`, 90, positionWorkExp);
+
+            // Datas e Duração
+            positionWorkExp += 10;
+            let duration = `${workExp.startDate} • ${workExp.endDate || 'The moment'}`;
+            doc.text(duration, 90, positionWorkExp);
+
+
+            // Competências
+            positionWorkExp += 10;
+            doc.text('Skills', 90, positionWorkExp);
+            workExp.technologies.forEach((skill) => {
+                positionWorkExp += 10;
+                doc.text(skill.name, 90, positionWorkExp);
+            });
+
+            positionWorkExp += 20;
+        };
+
+        doc.setFont('helvetica', 'bold');
+        doc.text("CERTIFICATES", 90, 210);
+        doc.setFont('helvetica', 'normal');
+        {
+            certificates.forEach((certificate) => {
+                doc.text(`- ${certificate.title}`, 90, positionCertificates);
+                positionCertificates += 10; // Incrementa a posição Y para a próxima linha
+            });
+        }
+
+        // Linha de separação
+        doc.setDrawColor(0);
+        doc.setLineWidth(0.5);
+        doc.line(10, 65, 200, 65); // Linha horizontal
+
+        // Salvar o PDF
+        doc.save("resume_DouglasBGavioli.pdf");
+    };
+
+    const portugueseCurriculum = () => {
         let positionKnowTechs = 170;
         let positionWorkExp = 130;
         let positionCertificates = 220;
@@ -54,7 +161,7 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
         doc.setFontSize(12);
         doc.setFont('helvetica', 'bold');
         doc.text("CONTATO", 10, 70);
-        doc.text("douglasbiassi.dev@gmail.com", 10, 80);
+        doc.text("douglasbiassi.dev@hotmail.com", 10, 80);
         doc.text("Santiago", 10, 90);
         doc.text("Rio Grande do Sul, Brasil", 10, 100);
         doc.text("55 99993-3697", 10, 110);
@@ -85,7 +192,7 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
         doc.setFont('helvetica', 'bold');
         doc.text("OBJETIVO", 90, 70);
         doc.setFont('helvetica', 'normal');
-        doc.text(doc.splitTextToSize('Olá, meu nome é Douglas Biassi Gavioli, sou desenvolvedor front-end com mais de 3 anos de experiência e apaixonado por tecnologia. Meu objetivo é criar interfaces criativas, bonitas e funcionais, além de compartilhar e adquirir conhecimento. Estou sempre aberto a novas oportunidades, desafios e críticas.', 110), 90, 80);
+        doc.text(doc.splitTextToSize('Olá, meu nome é Douglas Biassi Gavioli, sou desenvolvedor front-end com mais de 4 anos de experiência e apaixonado por tecnologia. Meu objetivo é criar interfaces criativas, bonitas e funcionais, além de compartilhar e adquirir conhecimento. Estou sempre aberto a novas oportunidades, desafios e críticas.', 110), 90, 80);
 
 
         // Seção de Experiência
@@ -133,8 +240,13 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
         doc.line(10, 65, 200, 65); // Linha horizontal
 
         // Salvar o PDF
-        doc.save("Curriculo_DouglasBGavioli.pdf");
+        doc.save("Currículo_DouglasBGavioli.pdf");
     };
+
+    const generateCurriculum = () => {
+        englishCurriculum();
+        portugueseCurriculum();
+    }
 
 
     return (
@@ -166,7 +278,7 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
                     <div className="flex items-center mt-6 lg:mt-10 sm:item-center gap-5 flex-col sm:flex-row">
                         <Button className="shadow-button w-max" onClick={handleContact}>
                             Entre em contato
-                            <HiArrowNarrowRight size={18} />
+                            <HiArrowNarrowDown size={18} />
                         </Button>
 
                         <Button onClick={generateCurriculum} className="shadow-button w-max">
