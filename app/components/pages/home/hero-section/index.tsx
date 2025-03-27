@@ -244,7 +244,9 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
     };
 
     const generateCurriculum = () => {
-        englishCurriculum();
+        setTimeout(() => {
+            englishCurriculum();
+        }, 2000);
         portugueseCurriculum();
     }
 
