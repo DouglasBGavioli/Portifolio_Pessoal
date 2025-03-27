@@ -244,11 +244,13 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
     };
 
     const generateCurriculum = async () => {
-        await portugueseCurriculum();
-        setTimeout(() => {
-            englishCurriculum();
-        }, 2000);
-    }
+        await new Promise((resolve) => {
+            portugueseCurriculum();
+            setTimeout(resolve, 3000);
+        });
+
+        englishCurriculum();
+    };
 
 
     return (
