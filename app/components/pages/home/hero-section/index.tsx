@@ -243,11 +243,11 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
         doc.save("Currículo_DouglasBGavioli.pdf");
     };
 
-    const generateCurriculum = () => {
+    const generateCurriculum = async () => {
+        await portugueseCurriculum();
         setTimeout(() => {
             englishCurriculum();
         }, 2000);
-        portugueseCurriculum();
     }
 
 
