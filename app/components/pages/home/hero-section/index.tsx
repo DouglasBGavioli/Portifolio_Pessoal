@@ -12,6 +12,7 @@ import { techBadgeAnimation } from "@/app/lib/animations"
 import { Certificates } from "@/app/types/certificates"
 import { WorkExperience } from "@/app/types/work-experience"
 import jsPDF from "jspdf"
+import JSZip from "jszip"
 import { format } from "date-fns"
 
 type HomeSectionProps = {
@@ -132,8 +133,8 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
         doc.setLineWidth(0.5);
         doc.line(10, 65, 200, 65); // Linha horizontal
 
-        // Salvar o PDF
-        doc.save("resume_DouglasBGavioli.pdf");
+        return doc.output("blob");
+
     };
 
     const portugueseCurriculum = () => {
@@ -240,16 +241,26 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
         doc.line(10, 65, 200, 65); // Linha horizontal
 
         // Salvar o PDF
-        doc.save("Currículo_DouglasBGavioli.pdf");
+        return doc.output("blob");
     };
 
     const generateCurriculum = async () => {
-        await new Promise((resolve) => {
-            portugueseCurriculum();
-            setTimeout(resolve, 3000);
-        });
+        const zip = new JSZip();
 
-        englishCurriculum();
+        const portugueseFile = await portugueseCurriculum();
+        const englishFile = await englishCurriculum();
+
+        zip.file("Currículo_DouglasBGavioli.pdf", portugueseFile);
+        zip.file("Resume_DouglasBGavioli.pdf", englishFile);
+
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(zipBlob);
+        link.download = "Currículos_DouglasBGavioli.zip";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
 
@@ -286,7 +297,7 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
                         </Button>
 
                         <Button onClick={generateCurriculum} className="shadow-button w-max">
-                            Gerar currículo
+                            Gerar currículos
                         </Button>
 
 
