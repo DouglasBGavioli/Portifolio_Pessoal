@@ -1,6 +1,5 @@
 import { SectionTitle } from "@/app/components/section-title"
 import { ExperienceItem } from "./experience-item"
-import { TechBadge } from "@/app/components/tech-badge"
 import { WorkExperience as IWorkExperience } from "@/app/types/work-experience"
 
 type WorkExperienceProps = {
