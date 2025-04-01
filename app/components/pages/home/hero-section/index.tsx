@@ -293,7 +293,7 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
                     <div className="flex items-center mt-6 lg:mt-10 sm:item-center gap-5 flex-col sm:flex-row">
                         <Button className="shadow-button w-max" onClick={handleContact}>
                             Entre em contato
-                            <HiArrowNarrowDown size={18} />
+                            <HiArrowNarrowRight size={18} />
                         </Button>
 
                         <Button onClick={generateCurriculum} className="shadow-button w-max">
