@@ -1,4 +1,5 @@
 import { Inter, IBM_Plex_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css'
 import { ReactNode } from 'react'
 import { Header } from './components/header'
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${plexMono.variable}`}>
       <body>
+        <Analytics/>
         <Toaster />
         <Header />
         {children}
