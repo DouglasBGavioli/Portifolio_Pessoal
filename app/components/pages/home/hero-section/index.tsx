@@ -274,7 +274,7 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
                     transition={{ duration: 0.5 }}
                 >
                     <p className="font-mono text-yellow-400">Olá, meu nome é</p>
-                    <h2 className="text-4xl font-medium mt-2">Douglas Gavioli</h2>
+                    <h2 className="text-4xl font-medium mt-2">Douglas Biassi Gavioli</h2>
 
                     <div className="text-gray-400 my-6 text-sm sm:text-base">
                         <RichText content={homeInfo.introduction.raw} />
