@@ -257,7 +257,7 @@ export const HeroSection = ({ homeInfo, certificates, workExperience }: HomeSect
 
         const link = document.createElement("a");
         link.href = URL.createObjectURL(zipBlob);
-        link.download = "Currículos_DouglasBGavioli.zip";
+        link.download = "Curriculos_DouglasBGavioli.zip";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
