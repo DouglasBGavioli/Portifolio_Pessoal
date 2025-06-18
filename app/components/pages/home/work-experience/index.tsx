@@ -12,8 +12,9 @@ export const WorkExperience = ({ experiences }: WorkExperienceProps) => {
             <div className="max-w-[420px]">
                 <SectionTitle subtitle="experiências" title="Experiência Profissional" />
                 <p className="text-gray-400 mt-6">
-                    Desenvolvedor Front-end com boa experiência em projetos web, atualmente concentrando meus esforços no setor de e-commerce.
+                    Sou desenvolvedor front-end, atualmente trabalhando com desenvolvimento de plataforma e-commerce e utilização de CMS, atuando diretamente com OCC, OSF e CS.
                 </p>
+                <p className="text-gray-400 mt-6"> Trabalho na Compass Uol a 4 anos, onde já participei do desenvolvimento de projetos como todo desenvolvimento do novo portal do Itaú Cultural e posteriormente do portal administrativo de informações do mesmo. Totalizando 7 meses de projeto. Após esse período passei a fazer parte do time Livelo, onde trabalho no projeto de ativação promocional e estou até o momento.</p>
             </div>
 
             <div className="flex flex-col gap-4">
