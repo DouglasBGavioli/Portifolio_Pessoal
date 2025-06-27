@@ -10,7 +10,7 @@ export const Footer = () => {
                 by
                 <strong className="font-medium hover:text-yellow-500 transition-all ">
                     <Link href={"https://www.linkedin.com/in/douglasbgavioli/"} target="_blank">
-                        Douglas Gavioli
+                        Douglas Biassi Gavioli
                     </Link>
                 </strong>
             </span>
