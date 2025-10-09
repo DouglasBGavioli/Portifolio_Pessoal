@@ -16,7 +16,7 @@ export const NavItem = ({ label, href }: NavItemProps) => {
             isActive && "text-gray-50"
         )}
         >
-            <span className="text-yellow-400 group-hover:rotate-180 transition-all ease-in-out duration-500">#</span>
+            <span className="text-yellow-400 transition-all ease-in-out duration-500">#</span>
             {label}
         </Link>
     )

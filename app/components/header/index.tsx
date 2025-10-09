@@ -4,6 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { NavItem } from "./nav-tem"
 import { motion } from 'framer-motion'
+import LanguageButton from "../languageButton"
 
 const NAV_ITENS = [
     {
@@ -29,10 +30,12 @@ export const Header = () => {
                     <Image width={58} height={49} src="/images/logo-dg.png" alt={"Logo portfolio"} />
 
                 </Link>
+
                 <nav className="flex itens-center gap-4">
                     {NAV_ITENS.map(item => (
                         <NavItem {...item} key={item.label} />
                     ))}
+                    <LanguageButton />
                 </nav>
             </div>
         </motion.header>
