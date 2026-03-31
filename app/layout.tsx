@@ -8,7 +8,12 @@ import { Footer } from './components/footer';
 import { BackToTop } from './components/back-to-top';
 import { Toaster } from './components/toaster';
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+
 export const metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Home',
     template: '%s | DG Portfólio',

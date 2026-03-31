@@ -1,4 +1,4 @@
-export const fetchHygraphQuery = async <T>(query: string, revalidate?: number): Promise<T> => {
+export const fetchHygraphQuery = async <T>(query: string): Promise<T> => {
     const response = await fetch(process.env.HYGRAPH_URL!, {
         method: "POST",
         headers: {
@@ -8,7 +8,7 @@ export const fetchHygraphQuery = async <T>(query: string, revalidate?: number): 
         },
         body: JSON.stringify({ query }),
         next: {
-            revalidate
+            tags: ["hygraph"]
         }
     });
 
